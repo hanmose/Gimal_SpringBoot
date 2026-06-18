@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Unity 퀴즈</title>
+  <link rel="stylesheet" th:href="@{/font/Dokdo.css}" />
+  <style>
+    body {
+      font-family: 'MYYeongnamnu', cursive;
+      text-align: center;
+      padding-top: 50px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      font-size: 50px;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background-color: black;
+      width: 30%;
+      margin: 30px auto;
+    }
+
+    .quiz        { margin-bottom: 100px; }
+    .question    { margin-bottom: 10px; font-weight: bold; }
+
+    input[type="radio"] { display: none; }
+
+    label {
+      cursor: pointer;
+      padding: 4px 10px;
+    }
+
+    .answer { display: none; margin-top: 10px; }
+
+    #q1x:checked ~ .a1 { display: block; }
+    #q1o:checked ~ .a2 { display: block; }
+    #q2o:checked ~ .a3 { display: block; }
+    #q2x:checked ~ .a4 { display: block; }
+    #q3x:checked ~ .a5 { display: block; }
+    #q3o:checked ~ .a6 { display: block; }
+    #q4o:checked ~ .a7 { display: block; }
+    #q4x:checked ~ .a8 { display: block; }
+    #q5x:checked ~ .a9  { display: block; }
+    #q5o:checked ~ .a10 { display: block; }
+
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 20px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      background: rgba(255,255,255,0.6);
+      padding: 4px 14px;
+      border-radius: 8px;
+      color: black;
+    }
+  </style>
+</head>
+<body th:style="|background-image: url('@{/images/BookIn.png}')|">
+
+  <a class="back-btn" th:href="@{/book}">← 책으로</a>
+
+  <div class="quiz">
+    <p class="question"><hr>Q1. Unity는 게임 엔진이 아닌 텍스트 편집기이다.</p>
+    <input type="radio" id="q1o" name="q1">
+    <label for="q1o">O</label>
+    <input type="radio" id="q1x" name="q1">
+    <label for="q1x">X</label>
+    <div class="answer a1">정답! Unity는 게임 엔진이며, 텍스트 편집기가 아닙니다.</div>
+    <div class="answer a2">오답! Unity는 텍스트 편집기가 아니라 게임 엔진입니다.</div>
+  </div>
+
+  <div class="quiz">
+    <p class="question"><hr>Q2. Unity에서 C#은 주요 스크립트 언어로 사용된다.</p>
+    <input type="radio" id="q2o" name="q2">
+    <label for="q2o">O</label>
+    <input type="radio" id="q2x" name="q2">
+    <label for="q2x">X</label>
+    <div class="answer a3">정답! Unity는 C#을 주요 스크립팅 언어로 사용합니다.</div>
+    <div class="answer a4">오답! Unity는 JavaScript가 아니라 C#을 사용합니다.</div>
+  </div>
+
+  <div class="quiz">
+    <p class="question"><hr>Q3. Rigidbody 없이도 물리 충돌 처리가 자동으로 된다.</p>
+    <input type="radio" id="q3o" name="q3">
+    <label for="q3o">O</label>
+    <input type="radio" id="q3x" name="q3">
+    <label for="q3x">X</label>
+    <div class="answer a5">정답! Rigidbody가 없으면 Unity는 물리 엔진과 상호작용하지 않습니다.</div>
+    <div class="answer a6">오답! 물리 기반 동작에는 Rigidbody가 필요합니다.</div>
+  </div>
+
+  <div class="quiz">
+    <p class="question"><hr>Q4. Update()는 매 프레임마다 호출되는 함수이다.</p>
+    <input type="radio" id="q4o" name="q4">
+    <label for="q4o">O</label>
+    <input type="radio" id="q4x" name="q4">
+    <label for="q4x">X</label>
+    <div class="answer a7">정답! Update()는 프레임마다 호출되어 애니메이션, 입력 등 처리에 사용됩니다.</div>
+    <div class="answer a8">오답! FixedUpdate()는 물리 처리용이고, 일반 로직은 Update()를 사용합니다.</div>
+  </div>
+
+  <div class="quiz">
+    <p class="question"><hr>Q5. GameObject는 반드시 하나 이상의 컴포넌트를 포함해야 한다.</p>
+    <input type="radio" id="q5o" name="q5">
+    <label for="q5o">O</label>
+    <input type="radio" id="q5x" name="q5">
+    <label for="q5x">X</label>
+    <div class="answer a9">정답! 빈 GameObject도 존재할 수 있으며, 컴포넌트는 선택적으로 추가됩니다.</div>
+    <div class="answer a10">오답! GameObject는 컴포넌트가 없어도 존재할 수 있습니다.</div>
+  </div>
+
+</body>
+</html>

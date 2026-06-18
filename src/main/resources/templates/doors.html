@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doors</title>
+  <link rel="stylesheet" th:href="@{/font/Dokdo.css}" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .image-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    img.back {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* 문 1 : Book */
+    .text {
+      position: absolute;
+      top: 55%;
+      left: 20%;
+      transform: translate(-50%, -50%);
+      text-decoration: none;
+      font-family: 'Dokdo', cursive;
+      font-size: 4vh;
+      color: black;
+    }
+
+    /* 문 2 : Potion */
+    .text2 {
+      position: absolute;
+      top: 55%;
+      left: 47%;
+      transform: translate(-50%, -50%);
+      text-decoration: none;
+      font-family: 'Dokdo', cursive;
+      font-size: 4vh;
+      color: black;
+    }
+
+    /* 문 3 : Night */
+    .text3 {
+      position: absolute;
+      top: 55%;
+      left: 75%;
+      transform: translate(-50%, -50%);
+      text-decoration: none;
+      font-family: 'Dokdo', cursive;
+      font-size: 4vh;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <div class="image-container">
+    <!-- th:src 로 정적 이미지 경로 지정 -->
+    <img class="back" th:src="@{/images/일단 이걸로 하자.png}" alt="Door Image"/>
+
+    <!-- th:href 로 컨트롤러 URL 매핑 -->
+    <a class="text"  th:href="@{/book}">
+      ㅤㅤㅤㅤㅤㅤㅤㅤ<br>ㅤㅤㅤㅤㅤㅤㅤㅤ<br>ㅤㅤㅤㅤㅤㅤㅤㅤ<br>
+      ㅤㅤㅤㅤㅤㅤㅤㅤ<br>ㅤㅤㅤㅤㅤㅤㅤㅤ<br>ㅤㅤㅤㅤㅤㅤㅤㅤ<br>
+      ㅤㅤㅤㅤㅤㅤㅤㅤ<br>ㅤㅤㅤㅤㅤㅤㅤㅤ<br>ㅤㅤㅤㅤㅤㅤㅤㅤ<br>
+      ㅤㅤㅤㅤㅤㅤㅤㅤ<br>ㅤㅤㅤㅤㅤㅤㅤㅤ
+    </a>
+
+    <a class="text2" th:href="@{/potion}">
+      ㅤㅤㅤㅤㅤㅤㅤㅤ<br>ㅤㅤㅤㅤㅤㅤㅤㅤ<br>ㅤㅤㅤㅤㅤㅤㅤㅤ<br>
+      ㅤㅤㅤㅤㅤㅤㅤㅤ<br>ㅤㅤㅤㅤㅤㅤㅤㅤ<br>ㅤㅤㅤㅤㅤㅤㅤㅤ<br>
+      ㅤㅤㅤㅤㅤㅤㅤㅤ<br>ㅤㅤㅤㅤㅤㅤㅤㅤ<br>ㅤㅤㅤㅤㅤㅤㅤㅤ<br>
+      ㅤㅤㅤㅤㅤㅤㅤㅤ<br>ㅤㅤㅤㅤㅤㅤㅤㅤ
+    </a>
+
+    <a class="text3" th:href="@{/night}">
+      ㅤㅤㅤㅤㅤㅤㅤㅤ<br>ㅤㅤㅤㅤㅤㅤㅤㅤ<br>ㅤㅤㅤㅤㅤㅤㅤㅤ<br>
+      ㅤㅤㅤㅤㅤㅤㅤㅤ<br>ㅤㅤㅤㅤㅤㅤㅤㅤ<br>ㅤㅤㅤㅤㅤㅤㅤㅤ<br>
+      ㅤㅤㅤㅤㅤㅤㅤㅤ<br>ㅤㅤㅤㅤㅤㅤㅤㅤ<br>ㅤㅤㅤㅤㅤㅤㅤㅤ<br>
+      ㅤㅤㅤㅤㅤㅤㅤㅤ<br>ㅤㅤㅤㅤㅤㅤㅤㅤ
+    </a>
+  </div>
+</body>
+</html>

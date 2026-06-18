@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unity 2강</title>
+  <link rel="stylesheet" th:href="@{/font/Dokdo.css}" />
+  <style>
+    body {
+      font-family: 'MYYeongnamnu', sans-serif;
+      line-height: 1.5;
+      margin: 40px;
+      margin-left: 400px;
+      color: black;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      background-size: cover;
+      font-size: 30px;
+    }
+
+    h1 {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin-bottom: 20px;
+      margin-left: -350px;
+    }
+
+    .column { margin: 0; }
+
+    .back-btn {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      background: rgba(255,255,255,0.7);
+      padding: 4px 12px;
+      border-radius: 8px;
+      color: black;
+      z-index: 100;
+    }
+  </style>
+</head>
+<body th:style="|background-image: url('@{/images/BookIn.png}')|">
+
+  <a class="back-btn" th:href="@{/book}">← 책으로</a>
+
+  <h1>Unity 기초 - 2강</h1>
+
+  <div class="column">
+    <h2>1. UI 시스템</h2>
+    <p><strong>Canvas:</strong> UI 요소들을 담는 컨테이너</p>
+    <p><strong>Button:</strong> 클릭 가능한 버튼</p>
+    <p><strong>Text:</strong> 문자 표시</p>
+    <p><strong>Image:</strong> 이미지 표시</p>
+    <p><strong>Slider:</strong> 값 조절 바</p>
+
+    <h2>2. 오디오</h2>
+    <p>AudioSource + AudioClip 조합</p>
+    <p><strong>Play():</strong> 소리 재생</p>
+    <p><strong>Stop():</strong> 소리 정지</p>
+    <p><strong>volume:</strong> 볼륨 조절</p>
+    <p><strong>loop:</strong> 반복 재생</p>
+
+    <h2>3. 카메라</h2>
+    <p>Camera.main으로 메인 카메라 접근</p>
+    <p><strong>ScreenToWorldPoint:</strong> 화면 좌표 변환</p>
+    <p><strong>fieldOfView:</strong> 시야각 조절</p>
+    <p><strong>orthographic:</strong> 직교/원근 투영</p>
+  </div>
+
+  <div class="column">
+    <h2>4. 라이팅</h2>
+    <p><strong>Directional Light:</strong> 태양광 같은 평행광</p>
+    <p><strong>Point Light:</strong> 전구 같은 점광원</p>
+    <p><strong>Spot Light:</strong> 손전등 같은 원뿔광</p>
+    <p>Intensity로 밝기 조절</p>
+
+    <h2>5. 머티리얼</h2>
+    <p>오브젝트의 외관을 결정</p>
+    <p><strong>Albedo:</strong> 기본 색상/텍스처</p>
+    <p><strong>Metallic:</strong> 금속성 정도</p>
+    <p><strong>Smoothness:</strong> 표면 매끄러움</p>
+
+    <h2>6. 파티클 시스템</h2>
+    <p>불, 연기, 폭발 등 효과 생성</p>
+    <p><strong>Emission:</strong> 방출 설정</p>
+    <p><strong>Shape:</strong> 방출 모양</p>
+    <p><strong>Color over Lifetime:</strong> 시간별 색변화</p>
+
+    <h2>7. 물리 조인트</h2>
+    <p><strong>Hinge Joint:</strong> 경첩 연결</p>
+    <p><strong>Fixed Joint:</strong> 고정 연결</p>
+    <p><strong>Spring Joint:</strong> 스프링 연결</p>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unity 1강</title>
+  <link rel="stylesheet" th:href="@{/font/Dokdo.css}" />
+  <style>
+    body {
+      font-family: 'MYYeongnamnu', sans-serif;
+      line-height: 1.5;
+      margin: 40px;
+      margin-left: 400px;
+      color: black;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      background-size: cover;
+      font-size: 30px;
+    }
+
+    h1 {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin-bottom: 20px;
+      margin-left: -350px;
+    }
+
+    .column { margin: 0; }
+
+    /* 뒤로가기 버튼 */
+    .back-btn {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      background: rgba(255,255,255,0.7);
+      padding: 4px 12px;
+      border-radius: 8px;
+      color: black;
+      grid-column: 1/-1;
+      z-index: 100;
+    }
+  </style>
+</head>
+<body th:style="|background-image: url('@{/images/BookIn.png}')|">
+
+  <a class="back-btn" th:href="@{/book}">← 책으로</a>
+
+  <h1>Unity 기초 - 1강</h1>
+
+  <div class="column">
+    <h2>1. Unity 인터페이스</h2>
+    <p><strong>Scene View:</strong> 게임 세계 편집 공간</p>
+    <p><strong>Game View:</strong> 게임 실행 화면</p>
+    <p><strong>Hierarchy:</strong> 오브젝트 목록</p>
+    <p><strong>Project:</strong> 파일 관리</p>
+    <p><strong>Inspector:</strong> 오브젝트 속성</p>
+
+    <h2>2. 게임 오브젝트</h2>
+    <p>모든 것은 GameObject + Component 구조</p>
+    <p><strong>Transform:</strong> 위치, 회전, 크기</p>
+    <p><strong>Renderer:</strong> 화면 출력</p>
+    <p><strong>Collider:</strong> 충돌 감지</p>
+    <p><strong>Rigidbody:</strong> 물리 효과</p>
+
+    <h2>3. C# 스크립팅</h2>
+    <p>MonoBehaviour 상속하여 스크립트 작성</p>
+    <p><strong>Start():</strong> 시작 시 한번 실행</p>
+    <p><strong>Update():</strong> 매 프레임 실행</p>
+    <p><strong>FixedUpdate():</strong> 물리 연산용</p>
+  </div>
+
+  <div class="column">
+    <h2>4. 입력 처리</h2>
+    <p>Input.GetKey(KeyCode.W) - 키보드</p>
+    <p>Input.GetMouseButtonDown(0) - 마우스</p>
+
+    <h2>5. 프리팹</h2>
+    <p>재사용 가능한 오브젝트 템플릿</p>
+    <p>Project 창으로 드래그하여 생성</p>
+
+    <h2>6. 좌표계</h2>
+    <p>X: 좌우, Y: 상하, Z: 앞뒤</p>
+    <p>Transform.position으로 위치 제어</p>
+
+    <h2>7. 애니메이션</h2>
+    <p>Animation 창에서 키프레임 설정</p>
+    <p>Animator Controller로 상태 관리</p>
+
+    <h2>8. 태그와 레이어</h2>
+    <p>GameObject.FindWithTag() 활용</p>
+    <p>충돌 및 렌더링 제어</p>
+  </div>
+
+</body>
+</html>

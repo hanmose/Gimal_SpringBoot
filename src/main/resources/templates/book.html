@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book</title>
+  <link rel="stylesheet" th:href="@{/font/Dokdo.css}" />
+  <style>
+    h1 {
+      font-family: 'MYYeongnamnu', cursive;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .image-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* 왼쪽 (링크) */
+    .text-left {
+      position: absolute;
+      left: 40%;
+      transform: translateX(-50%);
+      text-decoration: none;
+      font-family: 'MYYeongnamnu', cursive;
+      font-size: 4vh;
+      color: black;
+    }
+
+    /* 오른쪽 (설명) */
+    .text-right {
+      position: absolute;
+      right: 43%;
+      transform: translateX(50%);
+      text-decoration: none;
+      font-family: 'MYYeongnamnu', cursive;
+      font-size: 4vh;
+      color: black;
+    }
+
+    .chapter1 { top: 35%; }
+    .chapter2 { top: 44%; }
+    .chapter3 { top: 53%; }
+    .chapter4 { top: 62%; }
+    .title     { top: 25%; }
+  </style>
+</head>
+<body>
+  <div class="image-container">
+    <img th:src="@{/images/ExBook.png}" alt="Book Image" />
+
+    <!-- 왼쪽: 링크 -->
+    <h1 class="text-left title">Unity</h1>
+    <a class="text-left chapter1" th:href="@{/bookin/chapter1}">1강</a>
+    <a class="text-left chapter2" th:href="@{/bookin/chapter2}">2강</a>
+    <a class="text-left chapter3" th:href="@{/bookin/memo}">Memo</a>
+    <a class="text-left chapter4" th:href="@{/bookin/quiz}">Quiz</a>
+
+    <!-- 오른쪽: 설명 -->
+    <h1 class="text-right title"></h1>
+    <span class="text-right chapter1">-인터페이스와 입력장치</span>
+    <span class="text-right chapter2">-UI와 오디오 시스템</span>
+    <span class="text-right chapter3">-복습노트</span>
+    <span class="text-right chapter4">-맞춰보기</span>
+  </div>
+</body>
+</html>

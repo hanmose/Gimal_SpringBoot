@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>별자리</title>
+  <link rel="stylesheet" th:href="@{/font/Dokdo.css}" />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    body {
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      font-family: 'Cafe24Decobox';
+      position: relative;
+      color: white;
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .group {
+      position: absolute;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .group.a { left: 20%; top: 25%; font-size: 150px; }
+    .group.b { left: 73%; top: 10%; font-size: 150px; }
+    .group.c { left: 20%; top: 60%; font-size: 150px; }
+    .group.d { left: 70%; top: 65%; font-size: 150px; }
+    .group.e { left: 55%; top: 47%; font-size: 150px; }
+
+    .center-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 150px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .group.a:hover ~ .center-text.a-text,
+    .group.b:hover ~ .center-text.b-text,
+    .group.c:hover ~ .center-text.c-text,
+    .group.d:hover ~ .center-text.d-text,
+    .group.e:hover ~ .center-text.e-text {
+      opacity: 1;
+    }
+
+    .shooting-star {
+      position: absolute;
+      opacity: 0.9;
+      filter: blur(1.5px);
+      z-index: 1;
+      pointer-events: none;
+      transition: transform 2.2s linear, opacity 2.2s linear;
+    }
+
+    /* 뒤로가기 버튼 */
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-family: 'Dokdo', cursive;
+      z-index: 100;
+      background: rgba(0,0,0,0.3);
+      padding: 6px 14px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body th:style="|background-image: url('@{/images/ExNight.png}')|">
+
+  <a class="back-btn" th:href="@{/}">← 돌아가기</a>
+
+  <div class="container">
+    <div class="group a">ㅤ</div>
+    <div class="group b">ㅤ</div>
+    <div class="group c">ㅤ</div>
+    <div class="group d">ㅤ</div>
+    <div class="group e">ㅤ</div>
+
+    <div class="center-text a-text">Ursa Major</div>
+    <div class="center-text b-text">Cassiopeia</div>
+    <div class="center-text c-text">Cygnus</div>
+    <div class="center-text d-text">Orion</div>
+    <div class="center-text e-text">Leo</div>
+  </div>
+
+  <script th:inline="javascript">
+    const STAR_INTERVAL = 100;
+
+    const colors = [
+      '255, 255, 255',
+      '255, 200, 200',
+      '200, 255, 255',
+      '200, 255, 200',
+      '255, 255, 200',
+      '255, 220, 180'
+    ];
+
+    function createShootingStar() {
+      const star = document.createElement('div');
+      star.classList.add('shooting-star');
+
+      const width = 2 + Math.random() * 3;
+      const height = 120 + Math.random() * 80;
+      star.style.width = `${width}px`;
+      star.style.height = `${height}px`;
+
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      star.style.background = `linear-gradient(to top, rgba(${color}, 1), rgba(${color}, 0))`;
+
+      const startX = Math.random() * window.innerWidth;
+      const startY = Math.random() * window.innerHeight * 0.3;
+
+      const angle = 70 + Math.random() * 40;
+      const rad = angle * Math.PI / 180;
+      const distance = 800 + Math.random() * 300;
+      const dx = Math.cos(rad) * distance;
+      const dy = Math.sin(rad) * distance;
+
+      star.style.left = `${startX}px`;
+      star.style.top  = `${startY}px`;
+
+      document.body.appendChild(star);
+
+      requestAnimationFrame(() => {
+        star.style.transform = `translate(${dx}px, ${dy}px)`;
+        star.style.opacity = 0;
+      });
+
+      setTimeout(() => star.remove(), 2300);
+    }
+
+    setInterval(createShootingStar, STAR_INTERVAL);
+  </script>
+</body>
+</html>

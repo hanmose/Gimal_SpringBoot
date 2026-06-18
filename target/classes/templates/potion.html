@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>연금술 항아리 - 드래그 앤 드롭</title>
+  <style>
+    :root {
+      --drop-zone-width: 500px;
+      --drop-zone-height: 420px;
+      --drop-zone-left: 48%;
+      --drop-zone-bottom: 6%;
+      --reset-left: 76%;
+      --reset-bottom: 75%;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      font-family: sans-serif;
+      background-color: #222;
+    }
+
+    .wrapper {
+      position: relative;
+      height: 100vh;
+      width: 100vw;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      transition: background-image 0.3s ease-in-out;
+    }
+
+    .ingredients {
+      position: absolute;
+      top: 4.2%;
+      left: 45%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 20px;
+      z-index: 10;
+    }
+
+    .ingredient {
+      cursor: grab;
+      transition: opacity 0.3s ease;
+      user-select: none;
+    }
+
+    .drop-zone {
+      position: absolute;
+      width: var(--drop-zone-width);
+      height: var(--drop-zone-height);
+      left: var(--drop-zone-left);
+      bottom: var(--drop-zone-bottom);
+      transform: translateX(-50%);
+      background: transparent;
+      border: none;
+      z-index: 5;
+    }
+
+    .reset-button {
+      position: absolute;
+      bottom: var(--reset-bottom);
+      left: var(--reset-left);
+      transform: translateX(-50%);
+      color: white;
+      font-size: 1.2em;
+      cursor: pointer;
+      user-select: none;
+      z-index: 10;
+    }
+
+    /* 뒤로가기 */
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      z-index: 100;
+      background: rgba(0,0,0,0.4);
+      padding: 6px 14px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <a class="back-btn" th:href="@{/}">← 돌아가기</a>
+
+  <div class="ingredients">
+    <img th:src="@{/images/jars/Fire-removebg-preview.png}"
+         id="red" class="ingredient" draggable="true">
+    <img th:src="@{/images/jars/Water-removebg-preview.png}"
+         id="blue" class="ingredient" draggable="true">
+    <img th:src="@{/images/jars/leaf-removebg-preview.png}"
+         id="green" class="ingredient" draggable="true">
+  </div>
+
+  <div class="wrapper" id="jarWrapper">
+    <div class="drop-zone"
+         ondragover="event.preventDefault()"
+         ondrop="handleDrop(event)"></div>
+    <div class="reset-button" onclick="resetJar()">
+      ㅤㅤㅤ<br>ㅤㅤㅤ<br>ㅤㅤㅤ<br>ㅤㅤㅤ<br>ㅤㅤㅤ
+    </div>
+  </div>
+
+  <!-- Thymeleaf 로 이미지 경로 JS 변수에 주입 -->
+  <script th:inline="javascript">
+    // 정적 리소스 경로를 Thymeleaf가 컨텍스트 경로 포함해서 생성
+    const JAR_BASE = /*[[@{/images/jars/}]]*/ '/images/jars/';
+
+    const droppedItems = new Set();
+    let currentDragged   = null;
+    let droppedSuccessfully = false;
+
+    document.querySelectorAll('.ingredient').forEach(el => {
+      el.addEventListener('dragstart', e => {
+        currentDragged = e.target;
+        droppedSuccessfully = false;
+        e.dataTransfer.setData("text/plain", e.target.id);
+        e.target.style.opacity = '0';
+      });
+      el.addEventListener('dragend', () => {
+        if (!droppedSuccessfully && currentDragged) {
+          currentDragged.style.opacity = '1';
+        }
+        currentDragged = null;
+      });
+    });
+
+    function handleDrop(event) {
+      event.preventDefault();
+      const id = event.dataTransfer.getData("text/plain");
+      if (!droppedItems.has(id)) {
+        droppedItems.add(id);
+        document.getElementById(id).style.opacity = '0';
+        droppedSuccessfully = true;
+        updateJarImage();
+      }
+    }
+
+    function updateJarImage() {
+      const jar = document.getElementById('jarWrapper');
+      const sorted = Array.from(droppedItems).sort().join('-');
+      const jarImages = {
+        'blue'          : 'blue.png',
+        'green'         : 'green.png',
+        'red'           : 'red.png',
+        'blue-green'    : 'mint.png',
+        'blue-red'      : 'purple.png',
+        'green-red'     : 'yellow.png',
+        'blue-green-red': 'white.png'
+      };
+      jar.style.backgroundImage =
+        `url('${JAR_BASE}${jarImages[sorted] || 'NoneJar.png'}')`;
+    }
+
+    function resetJar() {
+      droppedItems.clear();
+      document.querySelectorAll('.ingredient').forEach(el => {
+        el.style.opacity = '1';
+        el.setAttribute('draggable', 'true');
+      });
+      document.getElementById('jarWrapper').style.backgroundImage =
+        `url('${JAR_BASE}NoneJar.png')`;
+    }
+
+    // 초기 배경 설정
+    document.getElementById('jarWrapper').style.backgroundImage =
+      `url('${JAR_BASE}NoneJar.png')`;
+  </script>
+</body>
+</html>

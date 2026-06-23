@@ -1,27 +1,5 @@
 # Gimal_SpringBoot
 
-> 1학년 때 제작한 판타지 테마 HTML 홈페이지를 Spring Boot 프레임워크로 전환한 기말 과제
-
-[![Java](https://img.shields.io/badge/Java-17-orange)](https://www.oracle.com/java/)
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.5-green)](https://spring.io/projects/spring-boot)
-[![Thymeleaf](https://img.shields.io/badge/Thymeleaf-3.1.2-teal)](https://www.thymeleaf.org/)
-[![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
-
----
-
-## 프로젝트 소개
-
-기존 HTML/CSS/JavaScript로 만들어진 판타지 테마 웹사이트를 Spring Boot + Thymeleaf로 리팩토링한 프로젝트입니다.
-
-| 항목 | 기존 (HTML) | 전환 후 (Spring Boot) |
-|---|---|---|
-| 서버 | 없음 (로컬 파일) | 내장 Tomcat |
-| 라우팅 | 파일 경로 직접 링크 | @GetMapping URL 매핑 |
-| 템플릿 | 순수 HTML | Thymeleaf 서버 사이드 렌더링 |
-| 경로 처리 | 상대 경로 ./ | @{/...} 컨텍스트 경로 자동 처리 |
-
----
-
 ## 주요 기능
 
 ### 메인 페이지 (Doors)
@@ -195,37 +173,6 @@ const saved = localStorage.getItem('memoContent');
 
 ---
 
-## 필요 환경
-
-- Java 17 이상
-- Maven 3.6 이상
-- 최신 웹 브라우저 (Chrome, Firefox, Safari, Edge)
-
----
-
-## 과제 요구사항
-
-- Spring Boot 프레임워크 사용
-- MVC 패턴 적용
-- Thymeleaf 템플릿 엔진 활용
-- 기존 HTML 완벽히 변환
-- 모든 인터랙티브 기능 유지
-
----
-
-## 링크
-
-- Repository: https://github.com/hanmose/Gimal_SpringBoot
-- Spring Boot Docs: https://spring.io/projects/spring-boot
-- Thymeleaf Docs: https://www.thymeleaf.org/
-
----
-
-## 라이선스
-
-MIT License - 자유롭게 사용 가능합니다.
-
----
 
 ## Author
 
